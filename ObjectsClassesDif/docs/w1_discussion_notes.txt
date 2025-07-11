@@ -1,0 +1,100 @@
+w1 discussion notes
+
+Objects:
+-instances of a class (internal data of object = state, objects store their states = instance variables)
+-not directly implemented by java programmer
+-used with methods of the objects class that act on the object
+-stores data about itself (can store information about all method calls used on it)
+-object of invoked method = implicit parameter
+
+Classes:
+-Defined by a similar behavior shared between objects
+-Contains the data that acts on a set of objects (through methods)
+-Instance methods act on an object while static methods do not
+-i.e, PrintStream class controls objects related to output
+-Makes sure object have any information they need
+
+
+for demonstration:
+-show difference between public and private:
+	methods & variables cannot be accessed by another class
+	private instance variables can be used by methods of same class while hiding 	implementation (encapsulation)
+	start constructing a class by providing its public interface
+		- all methods a user of the class may want to use on objects
+		IN EXAMPLE (SCRATCHER CARD):
+			- start game
+			- increase stakes (less likely to win)
+			- decrease stakes (more likely to win)
+			- scratch (play game)
+			- reset (clear game)
+
+
+logic for rewards:
+
+currReward = 5 // <- explicit paramater
+multiplier = 1
+odds = 90;
+oddsVal = 6
+
+stakesPlus -> odds -= oddsVal -> multiplier += 1 -> currReward = multiplier * currReward
+stakesDec -> odds += 3 -> currReward = currReward/multiplier -> multiplier -= 1
+
+call stakesPlus()
+odds = 84
+multiplier = 2
+currReward = 10
+
+call stakesPlus()
+odds = 78
+multiplier = 3
+currReward = 30
+
+call stakesDec()
+odds = 84
+currReward = 30/3 = 10
+multiplier = 2
+
+call stakesPlus()
+odds = 78
+multiplier = 3
+currReward = 30
+
+call stakesPlus()
+odds = 72
+multiplier = 4
+currReward = 120
+
+call stakesDec()
+odds = 78
+currReward = 120/4 = 30
+multiplier = 3
+
+- handle gameState within startGame() only
+- switch cases instead of multiple methods
+
+GEM BANK:
+
+if gembank - currReward < 0 -> gembank = 0; else -> gembank -= currReward
+gembank = 0
+currReward = 30
+
+win
+(don't reset multiplier)
+(don't reset reward)
+
+gembank = 30
+stakesPlus()
+stakesPlus()
+currReward = 600
+
+win
+
+gembank = 630
+currReward = 600
+
+lose
+
+gembank = 30
+
+
+
