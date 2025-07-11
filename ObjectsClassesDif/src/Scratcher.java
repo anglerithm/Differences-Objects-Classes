@@ -10,7 +10,29 @@ public class Scratcher
     private int multiplier = 1; // affected by increasing or decreasing stakes
     private boolean gameState = false; // will be set to true with startGame()
 
-    //ACCESSORS
+    // CONSTRUCTORS
+
+    /*
+     * basic constructor with no game presets
+     */
+    public Scratcher() {}
+
+    /*
+     * constructor with a few options
+     */
+    public Scratcher(boolean resetFile)
+    {
+        if (resetFile)
+        {
+            odds = 90;
+            currReward = 5;
+            gemBank = 0;
+            multiplier = 1;
+            gameState = false;
+        }
+    }
+
+    // ACCESSORS
 
     /*
      * gets the current odds of the game
